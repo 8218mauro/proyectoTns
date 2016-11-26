@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 public class Tarifas {
-    private int cAerolinea;
+    private Aerolinea cAerolinea;
     private String cOrigen;
     private String cDestino;
     private Timestamp fSalida;
@@ -14,7 +14,7 @@ public class Tarifas {
     public Tarifas() {
     }
 
-    public Tarifas(int cAerolinea, String cOrigen, String cDestino, Timestamp fSalida, Timestamp fLlegada, double precio) {
+    public Tarifas(Aerolinea cAerolinea, String cOrigen, String cDestino, Timestamp fSalida, Timestamp fLlegada, double precio) {
         this.cAerolinea = cAerolinea;
         this.cOrigen = cOrigen;
         this.cDestino = cDestino;
@@ -23,11 +23,11 @@ public class Tarifas {
         this.precio = precio;
     }
 
-    public int getcAerolinea() {
+    public Aerolinea getcAerolinea() {
         return cAerolinea;
     }
 
-    public void setcAerolinea(int cAerolinea) {
+    public void setcAerolinea(Aerolinea cAerolinea) {
         this.cAerolinea = cAerolinea;
     }
 

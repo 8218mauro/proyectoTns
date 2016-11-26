@@ -30,20 +30,37 @@ public class SERVOperaciones extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            DAOTarifas dao = new DAOTarifas();
-            List<Tarifas> datos = new ArrayList<Tarifas>();
+            
             String tabla = "";
-            Timestamp valor = Timestamp.valueOf(request.getParameter("param")+" 00:00:00.000");
+            String operacion = request.getParameter("operacion");
+            
             
             try {
-                //if(valor=="horario"){
-                    tabla +="<tr><th>C. Aerolinea</th><th>C. Origen</th><th>C. Destino</th><th>F. Salida</th><th>F. Llegada</th><th>Costo</th><tr>";
-                        datos=dao.filtrar2(valor);
+                if("filtrarPorHorario".equals(operacion)){
+                    Timestamp valor = Timestamp.valueOf(request.getParameter("param")+" 00:00:00.000");
+                    DAOTarifas dao = new DAOTarifas();
+                    List<Tarifas> datos = new ArrayList<Tarifas>();
+                    tabla +="<tr><th>Aerolinea</th><th>C. Origen</th><th>C. Destino</th><th>F. Salida</th><th>F. Llegada</th><th>Costo</th><tr>";
+                        datos=dao.filtrarPorFecha(valor);
                         for (Tarifas t : datos){
-                            tabla+="<tr><td>"+t.getcAerolinea()+"</td><td>"+t.getcOrigen()+"</td><td>"+t.getcDestino()+"</td><td>"+t.getfSalida()+"</td><td>"+t.getfLlegada()+"</td><td>"+t.getPrecio()+"</td></tr>";
+                            tabla+="<tr><td>"+t.getcAerolinea().getNombre()+"</td><td>"+t.getcOrigen()+"</td><td>"+t.getcDestino()+"</td><td>"+t.getfSalida()+"</td><td>"+t.getfLlegada()+"</td><td>"+t.getPrecio()+"</td></tr>";
                         }
                         out.print(tabla);
-               // }
+                }else if("filtrarPorCosto".equals(operacion)){
+                    
+                    String costoInicial = request.getParameter("costoInicial");
+                    String costoFinal = request.getParameter("costoFinal");
+                    DAOTarifas dao = new DAOTarifas();
+                    List<Tarifas> datos = new ArrayList<Tarifas>();
+                    tabla +="<tr><th>Aerolinea</th><th>C. Origen</th><th>C. Destino</th><th>F. Salida</th><th>F. Llegada</th><th>Costo</th><tr>";
+                        datos=dao.filtrarPorCosto( costoInicial, costoFinal );
+                        for (Tarifas t : datos){
+                            tabla+="<tr><td>"+t.getcAerolinea().getNombre()+"</td><td>"+t.getcOrigen()+"</td><td>"+t.getcDestino()+"</td><td>"+t.getfSalida()+"</td><td>"+t.getfLlegada()+"</td><td>"+t.getPrecio()+"</td></tr>";
+                        }
+                        out.print(tabla);
+                }else if("filtrarPorEstado".equals(operacion)){
+                    
+                }
             } catch (Exception e) {
             }   
         }

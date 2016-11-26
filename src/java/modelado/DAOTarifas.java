@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import uml.Aerolinea;
 import uml.Tarifas;
 
 /**
@@ -45,7 +46,7 @@ public class DAOTarifas implements operaciones{
         Connection conn;
         PreparedStatement pst;
         ResultSet res;
-        String query = "SELECT * FROM tarifas, aerolinea WHERE tarifas.cAerolinea=aerolinea.idAerolinea;";
+        String query = "SELECT * FROM tarifas, aerolinea WHERE tarifas.cAerolinea=aerolinea.idAerolinea and tarifas.costo >= '' and tarifas.costo <= '' ";
         
         try {
             
@@ -55,8 +56,12 @@ public class DAOTarifas implements operaciones{
             pst = conn.prepareStatement(query);
             res = pst.executeQuery();
             
+            Aerolinea aerolinea = new Aerolinea();
+            aerolinea.setIdAerolinea(res.getInt("cAerolinea"));
+            aerolinea.setNombre("nombre");
+            
             while(res.next()){
-                 datos.add(new Tarifas(res.getInt("cAerolinea"),res.getString("cOrigen"),res.getString("cDestino"),res.getTimestamp("fSalida"),res.getTimestamp("fLlegada"),res.getDouble("precio")));
+                 datos.add(new Tarifas(aerolinea,res.getString("cOrigen"),res.getString("cDestino"),res.getTimestamp("fSalida"),res.getTimestamp("fLlegada"),res.getDouble("precio")));
             }
             pst.close();
             conn.close();
@@ -65,8 +70,8 @@ public class DAOTarifas implements operaciones{
         return datos;
     }
     
-    public List<Tarifas> filtrar2(Timestamp campo) {
-        System.out.println("hemos llegado hasta aqui");
+    public List<Tarifas> filtrarPorFecha(Timestamp campo) {
+        
         List<Tarifas> datos = new ArrayList<Tarifas>();
         Connection conn;
         PreparedStatement pst;
@@ -80,9 +85,41 @@ public class DAOTarifas implements operaciones{
             
             pst = conn.prepareStatement(query);
             res = pst.executeQuery();
+            Aerolinea aerolinea = new Aerolinea();
             
             while(res.next()){
-                 datos.add(new Tarifas(res.getInt("cAerolinea"),res.getString("cOrigen"),res.getString("cDestino"),res.getTimestamp("fSalida"),res.getTimestamp("fLlegada"),res.getDouble("precio")));
+                aerolinea.setIdAerolinea(res.getInt("cAerolinea"));
+                aerolinea.setNombre(res.getString("nombre"));
+                 datos.add(new Tarifas(aerolinea,res.getString("cOrigen"),res.getString("cDestino"),res.getTimestamp("fSalida"),res.getTimestamp("fLlegada"),res.getDouble("precio")));
+            }
+            pst.close();
+            conn.close();
+        } catch (ClassNotFoundException | SQLException e) {}
+        
+        return datos;
+    }
+    
+     public List<Tarifas> filtrarPorCosto(String costoInicial, String costoFinal) {
+        
+        List<Tarifas> datos = new ArrayList<Tarifas>();
+        Connection conn;
+        PreparedStatement pst;
+        ResultSet res;
+        String query = "SELECT * FROM tarifas, aerolinea WHERE tarifas.cAerolinea=aerolinea.idAerolinea AND tarifas.precio>='"+costoInicial+"'  and  tarifas.precio<='"+costoFinal+"'";
+        
+        try {
+            
+            Class.forName(db.getDriver());
+            conn = DriverManager.getConnection(db.getUrl(),db.getUsuario(),db.getContrasena());
+            
+            pst = conn.prepareStatement(query);
+            res = pst.executeQuery();
+            Aerolinea aerolinea = new Aerolinea();
+            
+            while(res.next()){
+                aerolinea.setIdAerolinea(res.getInt("cAerolinea"));
+                aerolinea.setNombre(res.getString("nombre"));
+                 datos.add(new Tarifas(aerolinea,res.getString("cOrigen"),res.getString("cDestino"),res.getTimestamp("fSalida"),res.getTimestamp("fLlegada"),res.getDouble("precio")));
             }
             pst.close();
             conn.close();

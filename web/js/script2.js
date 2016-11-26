@@ -13,6 +13,10 @@ $(document).ready(function() {
 		consultaHorario();
 	});
         
+        $("#btnCosto").on('click', function() {
+		event.preventDefault();
+		consultaPorCosto();
+	});
         
         $("#fHorario").css("display", "none");
         $("#fCosto").css("display", "none");
@@ -20,17 +24,6 @@ $(document).ready(function() {
 	function horarios(){
             $("#fHorario").css("display", "block");
             $("#fCosto").css("display", "none");
-		/*$.ajax({
-			url: 'SERVOperaciones',
-			type: 'POST',
-			data: {param: "horario"},
-				success:function(data){
-				$("#result").html("<table border='1px' width='600px'>"+data+"</table>");
-			},
-			error:function(jq,es,error){
-				console.log(es)
-			}
-		})*/
 	}
         
         function tarifas(){
@@ -41,15 +34,34 @@ $(document).ready(function() {
         function consultaHorario(){
                     var campo = $("#txtHorario").val(); 
                     console.log(campo);
+                    var operacion = "filtrarPorHorario";
             $.ajax({
 			url: 'SERVOperaciones',
 			type: 'POST',
-			data: {param: campo },
+			data: {param: campo, operacion:operacion},
 				success:function(data){
 				$("#result").html("<table border='1px' width='600px'>"+data+"</table>");
 			},
 			error:function(jq,es,error){
-				console.log(es)
+				console.log(es);
+			}
+		});
+        }
+        
+        function consultaPorCosto(){
+                    var costoInicial = $("#txtCinicial").val(); 
+                    var costoFinal = $("#txtCfinal").val(); 
+                    
+                    var operacion = "filtrarPorCosto";
+            $.ajax({
+			url: 'SERVOperaciones',
+			type: 'POST',
+			data: {costoInicial: costoInicial, operacion:operacion, costoFinal:costoFinal},
+				success:function(data){
+				$("#result").html("<table border='1px' width='600px'>"+data+"</table>");
+			},
+			error:function(jq,es,error){
+				console.log(es);
 			}
 		});
         }

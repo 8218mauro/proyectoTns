@@ -1,19 +1,20 @@
 package uml;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Tarifas {
     private int cAerolinea;
     private String cOrigen;
     private String cDestino;
-    private Date fSalida;
-    private Date fLlegada;
+    private Timestamp fSalida;
+    private Timestamp fLlegada;
     private double precio;
 
     public Tarifas() {
     }
 
-    public Tarifas(int cAerolinea, String cOrigen, String cDestino, Date fSalida, Date fLlegada, double precio) {
+    public Tarifas(int cAerolinea, String cOrigen, String cDestino, Timestamp fSalida, Timestamp fLlegada, double precio) {
         this.cAerolinea = cAerolinea;
         this.cOrigen = cOrigen;
         this.cDestino = cDestino;
@@ -45,29 +46,40 @@ public class Tarifas {
     public void setcDestino(String cDestino) {
         this.cDestino = cDestino;
     }
-
-    public Date getfSalida() {
-        return fSalida;
-    }
-
-    public void setfSalida(Date fSalida) {
-        this.fSalida = fSalida;
-    }
-
-    public Date getfLlegada() {
-        return fLlegada;
-    }
-
-    public void setfLlegada(Date fLlegada) {
-        this.fLlegada = fLlegada;
-    }
-
     public double getPrecio() {
         return precio;
     }
 
     public void setPrecio(double precio) {
         this.precio = precio;
+    }
+
+    /**
+     * @return the fSalida
+     */
+    public Timestamp getfSalida() {
+        return fSalida;
+    }
+
+    /**
+     * @param fSalida the fSalida to set
+     */
+    public void setfSalida(Timestamp fSalida) {
+        this.fSalida = fSalida;
+    }
+
+    /**
+     * @return the fLlegada
+     */
+    public Timestamp getfLlegada() {
+        return fLlegada;
+    }
+
+    /**
+     * @param fLlegada the fLlegada to set
+     */
+    public void setfLlegada(Timestamp fLlegada) {
+        this.fLlegada = fLlegada;
     }
     
 }

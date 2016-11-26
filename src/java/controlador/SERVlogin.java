@@ -50,6 +50,7 @@ public class SERVlogin extends HttpServlet {
                 for(Usuario p : datos){
                     out.print(p.getCc());
                     sesion.setAttribute("usuario", p.getCc());
+                    sesion.setAttribute("nombre", p.getNombres());
                 }
                 
                 

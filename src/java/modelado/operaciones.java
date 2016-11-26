@@ -1,5 +1,6 @@
 package modelado;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 public interface operaciones {
@@ -8,4 +9,5 @@ public interface operaciones {
     public String modificar(Object obj);
     public List<?> listar();
     public List<?> filtrar(String campo, String criterio);
+   
 }

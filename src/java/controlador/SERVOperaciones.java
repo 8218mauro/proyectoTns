@@ -2,6 +2,9 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,16 +30,22 @@ public class SERVOperaciones extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+            DAOTarifas dao = new DAOTarifas();
+            List<Tarifas> datos = new ArrayList<Tarifas>();
+            String tabla = "";
+            Timestamp valor = Timestamp.valueOf(request.getParameter("param")+" 00:00:00.000");
             
             try {
-                  if(request.getParameter("param")=="horario"){
-
-                }
-                  
+                //if(valor=="horario"){
+                    tabla +="<tr><th>C. Aerolinea</th><th>C. Origen</th><th>C. Destino</th><th>F. Salida</th><th>F. Llegada</th><th>Costo</th><tr>";
+                        datos=dao.filtrar2(valor);
+                        for (Tarifas t : datos){
+                            tabla+="<tr><td>"+t.getcAerolinea()+"</td><td>"+t.getcOrigen()+"</td><td>"+t.getcDestino()+"</td><td>"+t.getfSalida()+"</td><td>"+t.getfLlegada()+"</td><td>"+t.getPrecio()+"</td></tr>";
+                        }
+                        out.print(tabla);
+               // }
             } catch (Exception e) {
-            }
-               
+            }   
         }
     }
 

@@ -1,9 +1,3 @@
-<%-- 
-    Document   : reservacion
-    Created on : 25/11/2016, 06:19:36 PM
-    Author     : MAURICIO
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,7 +6,7 @@
         <title>Reservacion</title>
         <%  RequestDispatcher rd = null;
             rd = request.getRequestDispatcher("index.jsp");
-            String nombre=(String)session.getAttribute("usuario");
+            String nombre=(String)session.getAttribute("nombre");
             if(nombre==null)
             {
                 out.print(nombre);

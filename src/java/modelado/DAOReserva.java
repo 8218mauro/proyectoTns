@@ -17,7 +17,7 @@ public class DAOReserva implements operaciones{
         Reserva r = (Reserva) obj;
         Connection conn;
         PreparedStatement pst;
-        String query = "INSERT INTO reserva VALUES(?,?,?)";
+        String query = "INSERT INTO reserva VALUES(?,?,?,?,?,?)";
         String respuesta = "";
         
         try {
@@ -27,6 +27,9 @@ public class DAOReserva implements operaciones{
             pst.setInt(1, r.getIdReserva());
             pst.setInt(2, r.getcUsuario());
             pst.setInt(3, r.getcAvion());
+            pst.setInt(4, r.getcVuelo());
+            pst.setDouble(5, r.getCosto());
+            pst.setInt(6, r.getcSilla());
 
             int filas = pst.executeUpdate();
             respuesta = "Se insertaron "+filas+" elementos";
@@ -75,7 +78,7 @@ public class DAOReserva implements operaciones{
             res = pst.executeQuery();
             
             while(res.next()){
-                datos.add(new Reserva(res.getInt("idReserva"),res.getInt("cUsuario"),res.getInt("cAvion")));
+                //datos.add(new Reserva(res.getInt("idReserva"),res.getInt("cUsuario"),res.getInt("cAvion")));
             }
             pst.close();
             conn.close();
@@ -100,7 +103,7 @@ public class DAOReserva implements operaciones{
             res = pst.executeQuery();
             
             while(res.next()){
-                datos.add(new Reserva(res.getInt("idReserva"),res.getInt("cUsuario"),res.getInt("cAvion")));
+                //datos.add(new Reserva(res.getInt("idReserva"),res.getInt("cUsuario"),res.getInt("cAvion")));
             }
             pst.close();
             conn.close();

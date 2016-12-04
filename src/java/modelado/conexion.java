@@ -8,7 +8,7 @@ public class conexion {
 
     public conexion() {
         this.driver = "com.mysql.jdbc.Driver";
-        this.url = "jdbc:mysql://localhost/vuelos";
+        this.url = "jdbc:mysql://localhost/vuelos2";
         this.usuario = "root";
         this.contrasena = "";
     }

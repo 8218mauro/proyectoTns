@@ -6,18 +6,16 @@ public class Usuario {
     private String apellidos;
     private int edad;
     private String correo;
-    private String contrasena;
 
     public Usuario() {
     }
 
-    public Usuario(int cc, String nombres, String apellidos, int edad, String correo, String contrasena) {
+    public Usuario(int cc, String nombres, String apellidos, int edad, String correo) {
         this.cc = cc;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.edad = edad;
         this.correo = correo;
-        this.contrasena = contrasena;
     }
 
     public int getCc() {
@@ -58,14 +56,6 @@ public class Usuario {
 
     public void setCorreo(String correo) {
         this.correo = correo;
-    }
-
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
     }
   
 }

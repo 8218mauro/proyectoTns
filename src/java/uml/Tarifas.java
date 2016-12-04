@@ -4,23 +4,35 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 public class Tarifas {
+    private int id;
     private Aerolinea cAerolinea;
     private String cOrigen;
     private String cDestino;
     private Timestamp fSalida;
     private Timestamp fLlegada;
     private double precio;
+    private int cAvion;
 
     public Tarifas() {
     }
 
-    public Tarifas(Aerolinea cAerolinea, String cOrigen, String cDestino, Timestamp fSalida, Timestamp fLlegada, double precio) {
+    public Tarifas(int id, Aerolinea cAerolinea, String cOrigen, String cDestino, Timestamp fSalida, Timestamp fLlegada, double precio, int cAvion) {
+        this.id = id;
         this.cAerolinea = cAerolinea;
         this.cOrigen = cOrigen;
         this.cDestino = cDestino;
         this.fSalida = fSalida;
         this.fLlegada = fLlegada;
         this.precio = precio;
+        this.cAvion = cAvion;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Aerolinea getcAerolinea() {
@@ -46,6 +58,23 @@ public class Tarifas {
     public void setcDestino(String cDestino) {
         this.cDestino = cDestino;
     }
+
+    public Timestamp getfSalida() {
+        return fSalida;
+    }
+
+    public void setfSalida(Timestamp fSalida) {
+        this.fSalida = fSalida;
+    }
+
+    public Timestamp getfLlegada() {
+        return fLlegada;
+    }
+
+    public void setfLlegada(Timestamp fLlegada) {
+        this.fLlegada = fLlegada;
+    }
+
     public double getPrecio() {
         return precio;
     }
@@ -54,32 +83,16 @@ public class Tarifas {
         this.precio = precio;
     }
 
-    /**
-     * @return the fSalida
-     */
-    public Timestamp getfSalida() {
-        return fSalida;
+    public int getcAvion() {
+        return cAvion;
     }
 
-    /**
-     * @param fSalida the fSalida to set
-     */
-    public void setfSalida(Timestamp fSalida) {
-        this.fSalida = fSalida;
+    public void setcAvion(int cAvion) {
+        this.cAvion = cAvion;
     }
 
-    /**
-     * @return the fLlegada
-     */
-    public Timestamp getfLlegada() {
-        return fLlegada;
-    }
-
-    /**
-     * @param fLlegada the fLlegada to set
-     */
-    public void setfLlegada(Timestamp fLlegada) {
-        this.fLlegada = fLlegada;
-    }
+    
+    
+   
     
 }

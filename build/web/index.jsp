@@ -46,7 +46,6 @@
                 Apellidos:<input type="text" id="txtApellidos" name="txtApellidos">
                 Edad:<input type="text" id="txtEdad" name="txtEdad">
                 Correo:<input type="email" id="txtCorreo" name="txtCorreo">
-                Contrasena:<input type="text" id="txtContrasena" name="txtContrasena">
                 <input type="submit" id="btnEnviar" name="btnEnviar" value="Enviar">
             </form>
         </div>

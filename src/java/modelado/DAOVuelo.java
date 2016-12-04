@@ -18,7 +18,7 @@ public class DAOVuelo implements operaciones{
         Vuelo v = (Vuelo) obj;
         Connection conn;
         PreparedStatement pst;
-        String query = "INSERT INTO vuelo VALUES(?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO vuelo VALUES(?,?,?,?,?,?,?)";
         String respuesta = "";
         
         try {
@@ -26,14 +26,13 @@ public class DAOVuelo implements operaciones{
             conn = DriverManager.getConnection(db.getUrl(),db.getUsuario(),db.getContrasena());
             pst = conn.prepareStatement(query);
             
-            pst.setInt(1, v.getIdVuelo());
-            pst.setInt(2, v.getcReserva());
-            pst.setDouble(3, v.getCosto());
-            pst.setString(4, v.getcOrigen());
-            pst.setString(5, v.getcDestino());
-            pst.setDate(6, (Date) v.getfSalida());
-            pst.setDate(7, (Date) v.getfLlegada());
-            pst.setInt(8, v.getnSilla());
+            pst.setInt(1, v.getCoAvion());
+            pst.setInt(2, 0);
+            pst.setString(3, v.getcOrigen());
+            pst.setString(4, v.getcDestino());
+            pst.setDate(5, (Date) v.getfSalida());
+            pst.setDate(6, (Date) v.getfLlegada());
+            pst.setInt(7, v.getaDisponibles());
 
             int filas = pst.executeUpdate();
             respuesta = "Se insertaron "+filas+" elementos";
@@ -83,7 +82,7 @@ public class DAOVuelo implements operaciones{
             res = pst.executeQuery();
             
             while(res.next()){
-                datos.add(new Vuelo(res.getInt("idVuelo"),res.getInt("cReserva"),res.getInt("costo"),res.getString("cOrigen"),res.getString("cDestino"),res.getDate("fSalida"),res.getDate("fLlegada"),res.getInt("nSilla")));
+                //datos.add(new Vuelo(res.getInt("idVuelo"),res.getInt("cReserva"),res.getInt("costo"),res.getString("cOrigen"),res.getString("cDestino"),res.getDate("fSalida"),res.getDate("fLlegada"),res.getInt("nSilla")));
             }
             pst.close();
             conn.close();

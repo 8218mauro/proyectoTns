@@ -3,7 +3,7 @@ package uml;
 public class Aerolinea {
     private int idAerolinea;
     private String nombre;
-
+    
     public Aerolinea() {
     }
 

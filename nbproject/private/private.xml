@@ -2,6 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/MAURICIO/Desktop/pReservas/proyectoTns/src/java/controlador/SERVlogin.java</file>
+            <file>file:/C:/Users/MAURICIO/Desktop/pReservas/proyectoTns/src/java/modelado/DAOUsuario.java</file>
+            <file>file:/C:/Users/MAURICIO/Desktop/pReservas/proyectoTns/web/js/miscript.js</file>
+            <file>file:/C:/Users/MAURICIO/Desktop/pReservas/proyectoTns/web/index.jsp</file>
+            <file>file:/C:/Users/MAURICIO/Desktop/pReservas/proyectoTns/web/consulta.jsp</file>
+            <file>file:/C:/Users/MAURICIO/Desktop/pReservas/proyectoTns/src/java/modelado/DAOTarifas.java</file>
+            <file>file:/C:/Users/MAURICIO/Desktop/pReservas/proyectoTns/src/java/modelado/DAOReserva.java</file>
+            <file>file:/C:/Users/MAURICIO/Desktop/pReservas/proyectoTns/src/java/controlador/SERVOperaciones.java</file>
+        </group>
     </open-files>
 </project-private>

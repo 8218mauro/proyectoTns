@@ -17,7 +17,7 @@ public class DAOUsuario implements operaciones{
         Usuario u = (Usuario) obj;
         Connection conn;
         PreparedStatement pst;
-        String query = "INSERT INTO usuario VALUES(?,?,?,?,?,?)";
+        String query = "INSERT INTO usuario VALUES(?,?,?,?,?)";
         String respuesta = "";
         
         try {
@@ -29,7 +29,6 @@ public class DAOUsuario implements operaciones{
             pst.setString(3, u.getApellidos());
             pst.setInt(4,u.getEdad());
             pst.setString(5, u.getCorreo());
-            pst.setString(6, u.getContrasena());
             
             int filas = pst.executeUpdate();
             respuesta = "Se insertaron "+filas+" elementos";
@@ -55,7 +54,7 @@ public class DAOUsuario implements operaciones{
             pst.setInt(1, u.getCc());
             
             int filas = pst.executeUpdate();
-            respuesta = "Se insertaron "+filas+" elementos";
+            respuesta = "Se eliminaron "+filas+" elementos";
             conn.close();
         } catch (ClassNotFoundException | SQLException e) {}
         return respuesta;
@@ -79,7 +78,6 @@ public class DAOUsuario implements operaciones{
             pst.setString(3, u.getApellidos());
             pst.setInt(4,u.getEdad());
             pst.setString(5, u.getCorreo());
-            pst.setString(6, u.getContrasena());
             pst.setInt(1, u.getCc());
             
             int filas = pst.executeUpdate();
@@ -106,7 +104,7 @@ public class DAOUsuario implements operaciones{
             res = pst.executeQuery();
             
             while(res.next()){
-                datos.add(new Usuario(res.getInt("cc"),res.getString("nombres"),res.getString("apellidos"),res.getInt("edad"),res.getString("correo"),res.getString("contrasena")));
+                datos.add(new Usuario(res.getInt("cc"),res.getString("nombres"),res.getString("apellidos"),res.getInt("edad"),res.getString("correo")));
             }
             pst.close();
             conn.close();
@@ -131,7 +129,7 @@ public class DAOUsuario implements operaciones{
             res = pst.executeQuery();
             
             while(res.next()){
-                datos.add(new Usuario(res.getInt("cc"),res.getString("nombres"),res.getString("apellidos"),res.getInt("edad"),res.getString("correo"),res.getString("contrasena")));
+                datos.add(new Usuario(res.getInt("cc"),res.getString("nombres"),res.getString("apellidos"),res.getInt("edad"),res.getString("correo")));
             }
             pst.close();
             conn.close();
@@ -139,13 +137,13 @@ public class DAOUsuario implements operaciones{
         return datos;
     }
     
-     public List<Usuario> verificar(String email, String pass) {
-        List<Usuario> datos = new ArrayList<Usuario>();
+     public List<Usuario> verificar(String email, int pass) {
+        List<Usuario> datos = new ArrayList<>();
         Usuario u = new Usuario();
         Connection conn;
         PreparedStatement pst;
         ResultSet res;
-        String query = "SELECT * FROM usuario WHERE correo='"+email+"' AND contrasena='"+pass+"'";
+        String query = "SELECT * FROM usuario WHERE correo='"+email+"' AND cc="+pass+"";
         
         try {
             
@@ -156,7 +154,7 @@ public class DAOUsuario implements operaciones{
             res = pst.executeQuery();
             
             while(res.next()){
-                 datos.add(new Usuario(res.getInt("cc"),res.getString("nombres"),res.getString("apellidos"),res.getInt("edad"),res.getString("correo"),res.getString("contrasena")));
+                 datos.add(new Usuario(res.getInt("cc"),res.getString("nombres"),res.getString("apellidos"),res.getInt("edad"),res.getString("correo")));
             }
             pst.close();
             conn.close();

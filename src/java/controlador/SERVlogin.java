@@ -37,11 +37,12 @@ public class SERVlogin extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             DAOUsuario dao = new DAOUsuario();
-            String campo1, campo2;
-            List<Usuario> datos = new ArrayList<Usuario>();
+            String campo1;
+            int campo2;
+            List<Usuario> datos = new ArrayList<>();
             
-            campo1 = request.getParameter("login");
-            campo2 = request.getParameter("password");
+            campo1 = request.getParameter("login");//este es el correo
+            campo2 = Integer.parseInt(request.getParameter("password"));//este es la cedula
             datos = dao.verificar(campo1, campo2);
             
             HttpSession sesion = request.getSession();

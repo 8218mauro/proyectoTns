@@ -3,35 +3,34 @@ package uml;
 import java.util.Date;
 
 public class Vuelo {
-    private int idVuelo;
+  
+    private int coAvion;
     private int cReserva;
-    private double costo;
     private String cOrigen;
     private String cDestino;
     private Date fSalida;
     private Date fLlegada;
-    private int nSilla;
+    private int aDisponibles;
 
     public Vuelo() {
     }
 
-    public Vuelo(int idVuelo, int cReserva, double costo, String cOrigen, String cDestino, Date fSalida, Date fLlegada, int nSilla) {
-        this.idVuelo = idVuelo;
+    public Vuelo(int coAvion, int cReserva, String cOrigen, String cDestino, Date fSalida, Date fLlegada, int aDisponibles) {
+        this.coAvion = coAvion;
         this.cReserva = cReserva;
-        this.costo = costo;
         this.cOrigen = cOrigen;
         this.cDestino = cDestino;
         this.fSalida = fSalida;
         this.fLlegada = fLlegada;
-        this.nSilla = nSilla;
+        this.aDisponibles = aDisponibles;
     }
 
-    public int getIdVuelo() {
-        return idVuelo;
+    public int getCoAvion() {
+        return coAvion;
     }
 
-    public void setIdVuelo(int idVuelo) {
-        this.idVuelo = idVuelo;
+    public void setCoAvion(int coAvion) {
+        this.coAvion = coAvion;
     }
 
     public int getcReserva() {
@@ -40,14 +39,6 @@ public class Vuelo {
 
     public void setcReserva(int cReserva) {
         this.cReserva = cReserva;
-    }
-
-    public double getCosto() {
-        return costo;
-    }
-
-    public void setCosto(double costo) {
-        this.costo = costo;
     }
 
     public String getcOrigen() {
@@ -82,12 +73,14 @@ public class Vuelo {
         this.fLlegada = fLlegada;
     }
 
-    public int getnSilla() {
-        return nSilla;
+    public int getaDisponibles() {
+        return aDisponibles;
     }
 
-    public void setnSilla(int nSilla) {
-        this.nSilla = nSilla;
+    public void setaDisponibles(int aDisponibles) {
+        this.aDisponibles = aDisponibles;
     }
+
+    
     
 }

@@ -12,12 +12,11 @@ $(document).ready(function() {
 		var ape = $("#txtApellidos").val();
 		var ed = $("#txtEdad").val();
 		var email = $("#txtCorreo").val();
-		var pass = $("#txtContrasena").val();
 
 		$.ajax({
 			url: 'SERVRegistro',
 			type: 'POST',
-			data: {cedula: cc, nombres: nom, apellidos: ape, edad: ed, correo: email, contrasena: pass},
+			data: {cedula: cc, nombres: nom, apellidos: ape, edad: ed, correo: email},
 			success:function(data){
 				$("#result").html(data);
 			},

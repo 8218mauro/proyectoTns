@@ -41,7 +41,6 @@ public class SERVRegistro extends HttpServlet {
             u.setApellidos(request.getParameter("apellidos"));
             u.setEdad(Integer.parseInt(request.getParameter("edad")));
             u.setCorreo(request.getParameter("correo"));
-            u.setContrasena(request.getParameter("contrasena"));
             out.println(dao.insertar(u));
         }
     }
